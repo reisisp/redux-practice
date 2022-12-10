@@ -1,1 +1,1 @@
-# vidita-systems-test-task
+# Vidita Systems test task
