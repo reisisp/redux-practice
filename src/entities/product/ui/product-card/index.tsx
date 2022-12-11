@@ -9,16 +9,19 @@ type ProductCardProps = {
 };
 
 export const ProductCard: FC<ProductCardProps> = ({ data }) => {
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  const { name, status, delivery_date, currency, volume, qty, sum } = data;
+  const total = `${sum * qty} ${currency}`;
   return (
     <Row gutter={16} justify="space-between" className={styles.card}>
-      <Col span={2}>{data.name}</Col>
-      <Col span={2}>{data.status}</Col>
-      <Col span={2}>{data.delivery_date}</Col>
-      <Col span={2}>{data.currency}</Col>
-      <Col span={2}>{data.volume}</Col>
-      <Col span={2}>{data.qty}</Col>
-      <Col span={2}>{data.sum}</Col>
-      <Col span={2}>123</Col>
+      <Col span={2}>{name}</Col>
+      <Col span={2}>{status}</Col>
+      <Col span={2}>{delivery_date}</Col>
+      <Col span={2}>{currency}</Col>
+      <Col span={2}>{volume}</Col>
+      <Col span={2}>{qty}</Col>
+      <Col span={2}>{sum}</Col>
+      <Col span={2}>{total}</Col>
     </Row>
   );
 };
