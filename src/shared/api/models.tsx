@@ -9,4 +9,6 @@ export type Product = {
   currency: string;
 };
 
+export type ProductKeys = "status" | "sum" | "qty" | "volume" | "name" | "delivery_date" | "currency";
+
 export type ProductKeysTypeNumber = "sum" | "qty" | "volume";

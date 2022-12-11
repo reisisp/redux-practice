@@ -124,6 +124,7 @@
         ],
         "react/function-component-definition": "off",
         "no-shadow": "off",
+        "no-param-reassign": "off",
         "require-jsdoc": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/ban-types": "off"
