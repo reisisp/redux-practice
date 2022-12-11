@@ -1,8 +1,7 @@
-import { ProductCard, productModel } from "entities/product";
+import { ProductList } from "entities/product";
 
 const ProductsPage = () => {
-  const product = productModel.initialState.data[0].id;
-  return <ProductCard data={product} />;
+  return <ProductList />;
 };
 
 export default ProductsPage;
