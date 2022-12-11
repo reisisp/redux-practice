@@ -8,3 +8,5 @@ export type Product = {
   delivery_date: string;
   currency: string;
 };
+
+export type ProductKeysTypeNumber = "sum" | "qty" | "volume";
