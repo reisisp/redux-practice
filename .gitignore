@@ -4,6 +4,7 @@
 /node_modules
 /.pnp
 .pnp.js
+/src/entities/product/model/temp.ts
 
 # testing
 /coverage
