@@ -1,14 +1,14 @@
 import { List } from "antd";
-import { productModel } from "entities/product/model";
+import { productModel, ProductCard } from "entities/product";
 
-import { ProductCard } from "../product-card";
+import { ProductListHeader } from "./ui/product-list-header";
 
 import styles from "./index.module.scss";
 
 export const ProductList = () => {
   const { data } = productModel.getInitialState();
   return (
-    <List size="large" header={<div>header</div>} footer={<div>footer</div>} bordered className={styles.list}>
+    <List size="large" header={<ProductListHeader />} footer={<div>footer</div>} bordered className={styles.list}>
       {data.map((el) => (
         <List.Item key={el.id} className={styles.list__item}>
           <ProductCard data={el} />
