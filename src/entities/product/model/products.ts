@@ -1,4 +1,5 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSelector, createSlice } from "@reduxjs/toolkit";
+import { useSelector } from "react-redux";
 import { Product } from "shared/api";
 
 export const initialState: {
@@ -33,5 +34,13 @@ export const productModel = createSlice({
   initialState,
   reducers: {},
 });
+
+export const useAllTasks = () =>
+  useSelector(
+    createSelector(
+      (state: RootState) => state.products.data,
+      (products) => products
+    )
+  );
 
 export const { reducer } = productModel;
