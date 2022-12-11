@@ -1,6 +1,6 @@
 import { createSelector, createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import { Product } from "shared/api";
+import { Product, ProductKeysTypeNumber } from "shared/api";
 
 export const initialState: {
   data: Product[];
@@ -35,11 +35,19 @@ export const productModel = createSlice({
   reducers: {},
 });
 
-export const useAllTasks = () =>
+export const useAllProducts = () =>
   useSelector(
     createSelector(
       (state: RootState) => state.products.data,
       (products) => products
+    )
+  );
+
+export const useProductsSumByKey = (key: ProductKeysTypeNumber) =>
+  useSelector(
+    createSelector(
+      (state: RootState) => state.products.data,
+      (products) => products.reduce((accumulator, el) => accumulator + el[key], 0)
     )
   );
 

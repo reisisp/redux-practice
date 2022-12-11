@@ -1,12 +1,12 @@
 import { List } from "antd";
-import { ProductCard, useAllTasks } from "entities/product";
+import { ProductCard, useAllProducts } from "entities/product";
 
 import { ProductListHeader, ProductListFooter } from "./ui";
 
 import styles from "./index.module.scss";
 
 export const ProductList = () => {
-  const data = useAllTasks();
+  const data = useAllProducts();
   return (
     <List size="large" header={<ProductListHeader />} footer={<ProductListFooter />} bordered className={styles.list}>
       {data.map((el) => (
