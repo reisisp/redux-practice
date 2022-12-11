@@ -9,7 +9,6 @@ type ProductCardProps = {
 };
 
 export const ProductCard: FC<ProductCardProps> = ({ data }) => {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
   const { name, status, delivery_date, currency, volume, qty, sum } = data;
   const total = `${sum * qty} ${currency}`;
   return (
