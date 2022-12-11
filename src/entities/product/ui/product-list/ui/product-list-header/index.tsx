@@ -16,14 +16,14 @@ export const ProductListHeader = () => {
       <Col span={2}>
         <Text className={styles.header__text}>Дата&nbsp;доставки</Text>
       </Col>
-      <Col span={2}>
+      <Col span={1} className={styles.header__item_centered}>
         <Text className={styles.header__text}>Валюта</Text>
       </Col>
-      <Col span={2}>
+      <Col span={1} className={styles.header__item_centered}>
         <Text className={styles.header__text}>Объём</Text>
       </Col>
-      <Col span={2}>
-        <Text className={styles.header__text}>Колличество</Text>
+      <Col span={1} className={styles.header__item_centered}>
+        <Text className={styles.header__text}>Кол-во</Text>
       </Col>
       <Col span={2}>
         <Text className={styles.header__text}>Сумма</Text>

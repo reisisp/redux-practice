@@ -1,8 +1,10 @@
 import { FC } from "react";
-import { Col, Row } from "antd/es/grid";
+import { Col, Row, Typography } from "antd";
 import { Product } from "shared/api";
 
 import styles from "./index.module.scss";
+
+const { Text } = Typography;
 
 type ProductCardProps = {
   data: Product;
@@ -13,14 +15,30 @@ export const ProductCard: FC<ProductCardProps> = ({ data }) => {
   const total = `${sum * qty} ${currency}`;
   return (
     <Row gutter={16} justify="space-between" className={styles.card}>
-      <Col span={2}>{name}</Col>
-      <Col span={2}>{status}</Col>
-      <Col span={2}>{delivery_date}</Col>
-      <Col span={2}>{currency}</Col>
-      <Col span={2}>{volume}</Col>
-      <Col span={2}>{qty}</Col>
-      <Col span={2}>{sum}</Col>
-      <Col span={2}>{total}</Col>
+      <Col span={2}>
+        <Text className={styles.card__text}>{name}</Text>
+      </Col>
+      <Col span={2}>
+        <Text className={styles.card__text}>{status}</Text>
+      </Col>
+      <Col span={2}>
+        <Text className={styles.card__text}>{delivery_date}</Text>
+      </Col>
+      <Col span={1} className={styles.card__el_centered}>
+        <Text className={styles.card__text}>{currency}</Text>
+      </Col>
+      <Col span={1} className={styles.card__el_centered}>
+        <Text className={styles.card__text}>{volume}</Text>
+      </Col>
+      <Col span={1} className={styles.card__el_centered}>
+        <Text className={styles.card__text}>{qty}</Text>
+      </Col>
+      <Col span={2}>
+        <Text className={styles.card__text}>{sum}</Text>
+      </Col>
+      <Col span={2}>
+        <Text className={styles.card__text}>{total}</Text>
+      </Col>
     </Row>
   );
 };
