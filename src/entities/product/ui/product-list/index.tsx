@@ -7,7 +7,7 @@ import styles from "./index.module.scss";
 
 export const ProductList = () => {
   const data = useAllProducts();
-  const sorted = [...data].sort((a, b) => (Date.parse(a.delivery_date) > Date.parse(b.delivery_date) ? 1 : -1));
+  const sorted = [...data].sort((a, b) => (Date.parse(a.delivery_date) > Date.parse(b.delivery_date) ? -1 : 1));
   return (
     <List size="large" header={<ProductListHeader />} footer={<ProductListFooter />} bordered className={styles.list}>
       {sorted.map((el) => (
