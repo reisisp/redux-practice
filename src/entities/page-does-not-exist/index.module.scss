@@ -1,0 +1,17 @@
+.alert-box {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.alert-box__text {
+  color: var(--text-primary);
+  font-weight: 500;
+  font-size: 20px;
+}
+.alert-box__link {
+  font-weight: 500;
+  font-size: 20px;
+}

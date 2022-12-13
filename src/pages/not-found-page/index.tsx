@@ -1,10 +1,12 @@
-import { SearchByField } from "feature";
-import { CenteredContainer } from "shared/ui";
+import { ui } from "shared";
+import { PageDoesNotExist } from "entities/page-does-not-exist";
+
+const { CenteredContainer } = ui;
 
 const NotFoundPage = () => {
   return (
     <CenteredContainer>
-      <SearchByField />
+      <PageDoesNotExist />
     </CenteredContainer>
   );
 };
