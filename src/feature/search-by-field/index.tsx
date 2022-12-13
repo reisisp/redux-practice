@@ -1,10 +1,10 @@
-import { Button, DatePicker, Form, Input, InputNumber, Select } from "antd";
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
-import { setSearchFieldKey, setSearchQuery, useSearchFieldKey } from "entities/product";
+import { Button, DatePicker, Form, Input, InputNumber, Select } from "antd";
+
 import { ProductKeys } from "shared/api";
+import { setSearchFieldKey, setSearchQuery, useSearchFieldKey } from "entities/product";
 
 import { searchValues } from "./config";
 

@@ -1,6 +1,6 @@
+import { FC } from "react";
 import { Checkbox } from "antd";
 import { isProductItemChecked, setToggleCheckedById } from "entities/product";
-import { FC } from "react";
 import { useDispatch } from "react-redux";
 
 export const CheckFilteredById: FC<{ id: string }> = ({ id }) => {

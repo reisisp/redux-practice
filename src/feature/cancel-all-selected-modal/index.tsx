@@ -1,5 +1,5 @@
-import { useCheckedItems, getCheckedProductsName } from "entities/product";
 import { ui } from "shared";
+import { useCheckedItems, getCheckedProductsName } from "entities/product";
 
 const { ApplyModal } = ui;
 
