@@ -1,3 +1,4 @@
+import { useDispatch } from "react-redux";
 import { Checkbox } from "antd";
 import {
   isFilteredProductsChecked,
@@ -5,7 +6,6 @@ import {
   setAllFilteredUnChecked,
   useFiltredProducts,
 } from "entities/product";
-import { useDispatch } from "react-redux";
 
 export const CheckAllFiltered = () => {
   const dispatch = useDispatch();
