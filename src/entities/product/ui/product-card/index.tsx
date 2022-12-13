@@ -1,5 +1,7 @@
 import { FC } from "react";
 import { Col, Row, Typography } from "antd";
+
+import { CheckFilteredById } from "feature";
 import { Product } from "shared/api";
 
 import styles from "./index.module.scss";
@@ -11,7 +13,8 @@ type ProductCardProps = {
 };
 
 export const ProductCard: FC<ProductCardProps> = ({ data }) => {
-  const { name, status, delivery_date, currency, volume, qty, sum } = data;
+  const { id, name, status, delivery_date, currency, volume, qty, sum } = data;
+
   const total = `${sum * qty} ${currency}`;
   return (
     <Row gutter={16} justify="space-between" className={styles.card}>
@@ -33,11 +36,14 @@ export const ProductCard: FC<ProductCardProps> = ({ data }) => {
       <Col span={1} className={styles.card__el_centered}>
         <Text className={styles.card__text}>{qty}</Text>
       </Col>
-      <Col span={2}>
+      <Col span={1}>
         <Text className={styles.card__text}>{sum}</Text>
       </Col>
-      <Col span={2}>
+      <Col span={1}>
         <Text className={styles.card__text}>{total}</Text>
+      </Col>
+      <Col span={1} className={styles.card__el_centered}>
+        <CheckFilteredById id={id} />
       </Col>
     </Row>
   );

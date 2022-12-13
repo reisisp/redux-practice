@@ -123,9 +123,11 @@
             "warn"
         ],
         "react/function-component-definition": "off",
+        "react-hooks/rules-of-hooks": "off",
         "no-shadow": "off",
         "no-param-reassign": "off",
         "require-jsdoc": "off",
+        "@typescript-eslint/no-unused-expressions": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "@typescript-eslint/ban-types": "off"
     }

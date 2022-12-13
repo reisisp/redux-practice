@@ -1,12 +1,12 @@
 import { List } from "antd";
-import { ProductCard, useAllProducts } from "entities/product";
+import { ProductCard, useFiltredProducts } from "entities/product";
 
 import { ProductListHeader, ProductListFooter } from "./ui";
 
 import styles from "./index.module.scss";
 
 export const ProductList = () => {
-  const data = useAllProducts();
+  const data = useFiltredProducts();
   const sorted = [...data].sort((a, b) => (Date.parse(a.delivery_date) > Date.parse(b.delivery_date) ? -1 : 1));
   return (
     <List size="large" header={<ProductListHeader />} footer={<ProductListFooter />} bordered className={styles.list}>

@@ -8,10 +8,12 @@ export const initialState: {
   data: Product[];
   searchFieldKey: ProductKeys;
   searchQuery: string;
+  checkedArr: string[];
 } = {
   data: tempArr,
   searchFieldKey: "name",
   searchQuery: "",
+  checkedArr: [],
 };
 
 export const productModel = createSlice({
@@ -24,12 +26,36 @@ export const productModel = createSlice({
     setSearchQuery: (state, { payload: setSearchQueryVal }: PayloadAction<string>) => {
       state.searchQuery = setSearchQueryVal;
     },
+    setAllFilteredChecked: (state, { payload: arr }: PayloadAction<string[]>) => {
+      const prepareArr: string[] = arr.filter((el) => state.checkedArr.indexOf(el) === -1);
+      state.checkedArr = [...state.checkedArr, ...prepareArr];
+    },
+    setAllFilteredUnChecked: (state, { payload: arr }: PayloadAction<string[]>) => {
+      state.checkedArr = state.checkedArr.filter((el) => arr.indexOf(el) === -1);
+    },
+    setToggleCheckedById: (state, { payload: key }: PayloadAction<string>) => {
+      const index = state.checkedArr.indexOf(key);
+      if (index === -1) {
+        state.checkedArr = [...state.checkedArr, key];
+      } else {
+        state.checkedArr = [
+          ...state.checkedArr.slice(0, index),
+          ...state.checkedArr.slice(index + 1, state.checkedArr.length + 1),
+        ];
+      }
+    },
   },
 });
 
-export const { setSearchFieldKey, setSearchQuery } = productModel.actions;
+export const {
+  setSearchFieldKey,
+  setSearchQuery,
+  setAllFilteredChecked,
+  setAllFilteredUnChecked,
+  setToggleCheckedById,
+} = productModel.actions;
 
-export const useAllProducts = () =>
+export const useFiltredProducts = () =>
   useSelector(
     createSelector(
       (state: RootState) => state.products,
@@ -56,7 +82,7 @@ export const useAllProducts = () =>
   );
 
 export const useProductsSumByKey = (key: ProductKeysTypeNumber) =>
-  useAllProducts().reduce((accumulator, el) => accumulator + el[key], 0);
+  useFiltredProducts().reduce((accumulator, el) => accumulator + el[key], 0);
 
 export const useSearchFieldKey = () =>
   useSelector(
@@ -71,6 +97,35 @@ export const useSearchQuery = () =>
     createSelector(
       (state: RootState) => state.products.searchQuery,
       (searchQuery) => searchQuery
+    )
+  );
+
+export const useCheckedItems = () =>
+  useSelector(
+    createSelector(
+      (state: RootState) => state.products.checkedArr,
+      (checkedArr) => checkedArr
+    )
+  );
+
+export const isProductItemChecked = (key: string): boolean =>
+  useSelector(
+    createSelector(
+      (state: RootState) => state.products.checkedArr,
+      (checkedArr) => checkedArr.indexOf(key) !== -1
+    )
+  );
+
+export const isFilteredProductsChecked = () =>
+  useSelector(
+    createSelector(
+      (state: RootState) => state.products.checkedArr,
+      (checkedArr) => {
+        const filteredProducts = useFiltredProducts();
+        const idArr = Array.from(new Set(filteredProducts.map((el) => checkedArr.indexOf(el.id) !== -1)));
+        if (idArr.length === 1 && idArr[0]) return true;
+        return false;
+      }
     )
   );
 

@@ -1,4 +1,5 @@
 import { Col, Row, Typography } from "antd";
+import { CheckAllFiltered } from "feature";
 
 import styles from "./index.module.scss";
 
@@ -25,11 +26,14 @@ export const ProductListHeader = () => {
       <Col span={1} className={styles.header__item_centered}>
         <Text className={styles.header__text}>Кол-во</Text>
       </Col>
-      <Col span={2}>
+      <Col span={1}>
         <Text className={styles.header__text}>Сумма</Text>
       </Col>
-      <Col span={2}>
+      <Col span={1}>
         <Text className={styles.header__text}>Всего</Text>
+      </Col>
+      <Col span={1} className={styles.header__item_centered}>
+        <CheckAllFiltered />
       </Col>
     </Row>
   );
