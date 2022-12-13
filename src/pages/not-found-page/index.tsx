@@ -1,10 +1,11 @@
 import { SearchByField } from "feature";
+import { CenteredContainer } from "shared/ui";
 
 const NotFoundPage = () => {
   return (
-    <div>
+    <CenteredContainer>
       <SearchByField />
-    </div>
+    </CenteredContainer>
   );
 };
 
