@@ -1,11 +1,12 @@
 import { ProductList } from "entities/product";
-import { SearchByField } from "feature";
+import { CancelAllSelectedModal, SearchByField } from "feature";
 
 const ProductsPage = () => {
   return (
     <>
       <SearchByField />
       <ProductList />
+      <CancelAllSelectedModal />
     </>
   );
 };

@@ -129,4 +129,17 @@ export const isFilteredProductsChecked = () =>
     )
   );
 
+export const getCheckedProductsName = () =>
+  useSelector(
+    createSelector(
+      (state: RootState) => state.products.checkedArr,
+      (state: RootState) => state.products.data,
+      (checkedArr, data) =>
+        data.reduce((namesArr: string[], el) => {
+          if (checkedArr.indexOf(el.id) !== -1) namesArr.push(el.name);
+          return namesArr;
+        }, [])
+    )
+  );
+
 export const { reducer } = productModel;
