@@ -1,6 +1,7 @@
 export interface ApplyModalProps {
   children: string | React.ReactNode;
-  msg: string;
+  msgTitle: string;
+  msgBody: string;
   confirm: () => void;
   isActive?: boolean;
 }
