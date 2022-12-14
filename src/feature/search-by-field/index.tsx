@@ -58,14 +58,14 @@ export const SearchByField = () => {
       </Select>
       {(fieldKey === "name" || fieldKey === "status" || fieldKey === "currency") && (
         <Input
-          style={{ width: "92%" }}
+          style={{ width: "90%" }}
           value={searchVal}
           onChange={onChangeSearch}
           autoFocus
           onPressEnter={onCompleteSearch}
         />
       )}
-      {fieldKey === "delivery_date" && <DatePicker.RangePicker style={{ width: "92%" }} onChange={onChangeDate} />}
+      {fieldKey === "delivery_date" && <DatePicker.RangePicker style={{ width: "90%" }} onChange={onChangeDate} />}
       {(fieldKey === "qty" || fieldKey === "sum" || fieldKey === "volume") && (
         <Form name="complex-form" onFinish={onFinishWithNumbers}>
           <Form.Item style={{ margin: 0 }}>
