@@ -8,28 +8,28 @@ const { Text } = Typography;
 export const ProductListHeader = () => {
   return (
     <Row gutter={16} justify="space-between" className={styles.header}>
-      <Col span={2}>
+      <Col span={3}>
         <Text className={styles.header__text}>Наименование</Text>
       </Col>
       <Col span={2}>
         <Text className={styles.header__text}>Статус</Text>
       </Col>
-      <Col span={2}>
+      <Col span={3}>
         <Text className={styles.header__text}>Дата&nbsp;доставки</Text>
       </Col>
-      <Col span={1} className={styles.header__item_centered}>
+      <Col span={2} className={styles.header__item_centered}>
         <Text className={styles.header__text}>Валюта</Text>
       </Col>
-      <Col span={1} className={styles.header__item_centered}>
+      <Col span={2} className={styles.header__item_centered}>
         <Text className={styles.header__text}>Объём</Text>
       </Col>
-      <Col span={1} className={styles.header__item_centered}>
+      <Col span={2} className={styles.header__item_centered}>
         <Text className={styles.header__text}>Кол-во</Text>
       </Col>
-      <Col span={1}>
+      <Col span={2}>
         <Text className={styles.header__text}>Сумма</Text>
       </Col>
-      <Col span={1}>
+      <Col span={2}>
         <Text className={styles.header__text}>Всего</Text>
       </Col>
       <Col span={1} className={styles.header__item_centered}>

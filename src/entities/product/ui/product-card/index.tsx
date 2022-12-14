@@ -18,28 +18,28 @@ export const ProductCard: FC<ProductCardProps> = ({ data }) => {
   const total = `${sum * qty} ${currency}`;
   return (
     <Row gutter={16} justify="space-between" className={styles.card}>
-      <Col span={2}>
+      <Col span={3}>
         <Text className={styles.card__text}>{name}</Text>
       </Col>
       <Col span={2}>
         <Text className={styles.card__text}>{status}</Text>
       </Col>
-      <Col span={2}>
+      <Col span={3}>
         <Text className={styles.card__text}>{delivery_date}</Text>
       </Col>
-      <Col span={1} className={styles.card__el_centered}>
+      <Col span={2} className={styles.card__el_centered}>
         <Text className={styles.card__text}>{currency}</Text>
       </Col>
-      <Col span={1} className={styles.card__el_centered}>
+      <Col span={2} className={styles.card__el_centered}>
         <Text className={styles.card__text}>{volume}</Text>
       </Col>
-      <Col span={1} className={styles.card__el_centered}>
+      <Col span={2} className={styles.card__el_centered}>
         <Text className={styles.card__text}>{qty}</Text>
       </Col>
-      <Col span={1}>
+      <Col span={2}>
         <Text className={styles.card__text}>{sum}</Text>
       </Col>
-      <Col span={1}>
+      <Col span={2}>
         <Text className={styles.card__text}>{total}</Text>
       </Col>
       <Col span={1} className={styles.card__el_centered}>
