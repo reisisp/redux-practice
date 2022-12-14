@@ -1,20 +1,62 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import { Product, ProductKeys, ProductKeysTypeNumber } from "shared/api";
-
-import { tempArr } from "./temp";
 
 export const initialState: {
   data: Product[];
   searchFieldKey: ProductKeys;
   searchQuery: string;
   checkedArr: string[];
+  loading: boolean;
+  isErr: boolean;
+  errMsg: string | undefined;
 } = {
-  data: tempArr,
+  data: [],
   searchFieldKey: "name",
   searchQuery: "",
   checkedArr: [],
+  loading: false,
+  isErr: false,
+  errMsg: "",
 };
+
+export const fetchData = createAsyncThunk<Product[], string, { rejectValue: string }>(
+  "products/fetchData",
+  async function (endpoint, { rejectWithValue }) {
+    try {
+      const res = await fetch(`https://site/endpoint/${endpoint}`);
+      if (!res.ok) {
+        return rejectWithValue(`${endpoint} server err`);
+      }
+      const data = await res.json();
+      return data;
+    } catch (e) {
+      return rejectWithValue(`${endpoint} server err`);
+    }
+  }
+);
+
+export const cancelChoosed = createAsyncThunk<any, string[], { rejectValue: string }>(
+  "products/cancelChoosed",
+  async function (arr, { rejectWithValue }) {
+    try {
+      const res = await fetch("https://site/endpoint/cancel", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(arr),
+      });
+
+      if (!res.ok) {
+        return rejectWithValue("/cancel server err");
+      }
+      return arr;
+    } catch (e) {
+      return rejectWithValue("/cancel server err");
+    }
+  }
+);
 
 export const productModel = createSlice({
   name: "products",
@@ -44,6 +86,37 @@ export const productModel = createSlice({
         ];
       }
     },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchData.pending, (state) => {
+        state.loading = true;
+        state.isErr = false;
+        state.errMsg = "";
+      })
+      .addCase(fetchData.fulfilled, (state, { payload }) => {
+        state.data = [...state.data, ...payload];
+        state.loading = false;
+        state.isErr = false;
+        state.errMsg = "";
+      })
+      .addCase(fetchData.rejected, (state, { payload }) => {
+        state.loading = false;
+        state.isErr = true;
+        state.errMsg = payload;
+      })
+      .addCase(cancelChoosed.pending, (state) => {
+        state.loading = true;
+        state.isErr = false;
+      })
+      .addCase(cancelChoosed.fulfilled, (state, { payload }) => {
+        state.data = state.data.filter((el) => payload.indexOf(el.id) !== -1);
+        state.loading = false;
+        state.isErr = false;
+      })
+      .addCase(cancelChoosed.rejected, (state) => {
+        state.loading = false;
+      });
   },
 });
 

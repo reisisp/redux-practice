@@ -1,9 +1,11 @@
 import { ui } from "shared";
-import { useCheckedItems, getCheckedProductsName } from "entities/product";
+import { useCheckedItems, getCheckedProductsName, cancelChoosed } from "entities/product";
+import { useAppDispatch } from "shared/api/hook";
 
 const { ApplyModal } = ui;
 
 export const CancelAllSelectedModal = () => {
+  const dispatch = useAppDispatch();
   const checked = useCheckedItems();
   const productNames = getCheckedProductsName();
 
@@ -12,7 +14,7 @@ export const CancelAllSelectedModal = () => {
   const isActive = !checked.length;
 
   const onConfirm = () => {
-    console.log(checked);
+    dispatch(cancelChoosed(checked));
   };
 
   return (
